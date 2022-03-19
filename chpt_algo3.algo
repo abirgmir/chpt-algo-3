@@ -1,0 +1,53 @@
+ALGORITHM chpt algo3
+VAR
+    T1 : ARRAY_OF INTEGER[3]
+    T2 : ARRAY_OF INTEGER[3]
+    result : BOOLEAN
+BEGIN
+    T1 := {1,4,5}
+    T2 := {8,4,6}
+
+    //appel procedure
+    dotProductProcedure(T1,T2)
+
+    //appel function
+    result:= dotProductFunction(T1,T2)
+    IF (result) THEN
+        write('orthogonal !')
+        else 
+        write('not orthogonal !')
+    END_IF
+END
+
+PROCEDURE dotProductProcedure(VAR T1: ARRAY_OF INTEGER,VAR T2: ARRAY_OF INTEGER)
+VAR
+    i:INTEGER
+    result:INTEGER := 0
+BEGIN
+
+    FOR i FROM 0 TO T1.length-1 STEP 1  DO
+        result= T1[i]*T2[i]+result
+    END_FOR
+    IF (result==0) THEN
+        write('orthogonal !')
+        else 
+        write('not orthogonal !')
+    END_IF
+END
+
+
+FUNCTION dotProductFunction(VAR T1: ARRAY_OF INTEGER,VAR T2: ARRAY_OF INTEGER) : BOOLEAN
+VAR
+    i:INTEGER
+    result:INTEGER := 0
+
+BEGIN
+    FOR i FROM 0 TO T1.length-1 STEP 1  DO
+        result= T1[i]*T2[i]+result
+    END_FOR
+    IF (result==0) THEN
+        RETURN true;
+        else 
+        RETURN false;
+    END_IF
+END
